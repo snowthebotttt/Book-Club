@@ -51,21 +51,7 @@ Recommend.init(
         },
       },
   },
-
   {
-    hooks: {
-      beforeCreate: async (newBookReview) => {
-        newUserData.password = await bcrypt.hash(newBookReview.password, 10);
-        return newUserData;
-      },
-      beforeUpdate: async (newBookReview) => {
-        newBookReview.password = await bcrypt.hash(
-            newBookReview.password,
-          10
-        );
-        return newBookReview;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

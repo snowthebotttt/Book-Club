@@ -1,11 +1,15 @@
-const Product = require('./Product');
-const Category = require('./Category');
-const Tag = require('./Tag');
-const ProductTag = require('./ProductTag');
+const user = require('./user');
+const book = require('./book');
+const recommend = require('.recommend.js');
+
 
 // Products belongsTo Category
-Product.belongsTo(Category, {
-  foreignKey: 'category_id',
+book.belongsTo(User, {
+  foreignKey: 'book_id',
+});
+
+recommend.belongsTo(User, {
+  foreignKey: 'book_id',
 });
 // Categories have many Products
 Category.hasMany(Product, {

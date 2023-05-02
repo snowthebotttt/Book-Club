@@ -16,17 +16,13 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    reviewerName: {
+    UserName: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    review: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      unique: true,
-    },
+
   },
 
   {
