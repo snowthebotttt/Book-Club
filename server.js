@@ -16,17 +16,6 @@ const PORT = process.env.PORT || 3001;
 // Sets up session and connect to our Sequelize db
 const sess = {
   secret: 'Super secret secret',
-  
-  cookie: {
-    
-    maxAge: 60 * 60 * 1000,
-  
-    httpOnly: true,
-    
-    secure: false,
-    
-    sameSite: 'strict',
-  },
   resave: false,
   saveUninitialized: true,
   // Sets up session store
