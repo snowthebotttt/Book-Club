@@ -4,6 +4,7 @@ const withAuth = require("../../utils/auth");
 
 // Prevent non logged in users from viewing the homepage
 router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ["password"] },
