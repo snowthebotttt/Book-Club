@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class books extends Model {}
+class Book extends Model {}
 
-books.init(
+Book.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,24 +15,16 @@ books.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     author: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [8],
-      },
+
     },
     ISBN: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
   },
   {
@@ -44,4 +36,6 @@ books.init(
   }
 );
 
-module.exports = Project;
+module.exports = Book;
+
+

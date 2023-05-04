@@ -6,7 +6,10 @@ class Recommend extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
 }
+const Book = require("./book");
+const Recommend = require("./recommend");
 
 Recommend.init(
   {
@@ -19,7 +22,6 @@ Recommend.init(
     reviewerName: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
     review: {
       type: DataTypes.TEXT,
@@ -50,4 +52,4 @@ Recommend.init(
   }
 );
 
-module.exports = Recommend;
+module.exports = { Book, Recommend };
