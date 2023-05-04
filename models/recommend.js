@@ -26,7 +26,6 @@ Recommend.init(
     review: {
       type: DataTypes.TEXT,
       allowNull: false,
-      unique: true,
     },
     bookName: {
       type: DataTypes.STRING,
