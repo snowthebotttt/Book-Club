@@ -8,8 +8,8 @@ class Recommend extends Model {
   }
 
 }
-const Book = require("./book");
-const Recommend = require("./recommend");
+const book = require("./book");
+const review = require("./review");
 
 Recommend.init(
   {
@@ -29,19 +29,18 @@ Recommend.init(
       unique: true,
     },
     bookName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-       },
-      author: {
-        type: DataTypes.STRING,
-        allowNull: false,
-             },
-      ISBN: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    ISBN: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
   },
   {
     sequelize,
@@ -52,4 +51,4 @@ Recommend.init(
   }
 );
 
-module.exports = { Book, Recommend };
+module.exports = { Recommend };
