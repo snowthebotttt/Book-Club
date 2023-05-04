@@ -7,14 +7,13 @@ Review.init({
     reviewerName: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
     },
 
     review: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+
     },
     rating: {
         type: DataTypes.INTEGER            ,
