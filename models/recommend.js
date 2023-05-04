@@ -8,8 +8,8 @@ class Recommend extends Model {
   }
 
 }
-const Book = require("./book");
-const Recommend = require("./recommend");
+const book = require("./book");
+const review = require("./review");
 
 Recommend.init(
   {
@@ -51,4 +51,4 @@ Recommend.init(
   }
 );
 
-module.exports = { Book, Recommend };
+module.exports = { Recommend };
