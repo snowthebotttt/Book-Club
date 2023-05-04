@@ -49,4 +49,6 @@ sequelize.sync({ force: false }).then(() => {
       `\nServer running on port ${PORT}. Visit http://localhost:${PORT} and create an account!`
     )
   );
-});
+}).catch((err) =>
+console.error("Unable to connect.", err)
+); 

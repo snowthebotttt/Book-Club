@@ -5,7 +5,7 @@ const router = express.Router();
 const login = require('./loginInformation');
 
 // Import route modules
-const userRoutes = require('./userRoutes');
+const userRoutes = require('./usersController');
 
 // Define routes
 router.use('/users', userRoutes);
