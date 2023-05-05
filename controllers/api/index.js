@@ -3,7 +3,7 @@ const router = express.Router();
 var app = express();
 
 // Import middleware modules
-const login = require("./loginInformation");
+// const login = require("./loginInformation");
 
 // Import route modules
 const userRoutes = require("./usersController");
