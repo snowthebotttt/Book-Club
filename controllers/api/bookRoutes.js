@@ -1,35 +1,78 @@
-const router = require('express').Router();
-const { User } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Book } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
-    const newUser = await User.create({
+    const newBook = await Book.create({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
-    res.status(200).json(newUser);
+    res.status(200).json(newBook);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const userData = await User.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
+    const books = await Book.findAll();
 
-    if (!userData) {
-      res.status(404).json({ message: 'No user found with this id!' });
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const book = await Book.findByPk(req.params.id);
+
+    if (!book) {
+      res.status(404).json({ message: "No book found with this id!" });
       return;
     }
 
-    res.status(200).json(userData);
+    res.status(200).json(book);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put("/:id", withAuth, async (req, res) => {
+  try {
+    const book = await Book.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!book[0]) {
+      res.status(404).json({ message: "No book found with this id!" });
+      return;
+    }
+
+    res.status(200).json({ message: "Book updated successfully!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Delete a book by ID
+router.delete("/:id", withAuth, async (req, res) => {
+  try {
+    const book = await Book.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!book) {
+      res.status(404).json({ message: "No book found with this id!" });
+      return;
+    }
+
+    res.status(200).json({ message: "Book deleted successfully!" });
   } catch (err) {
     res.status(500).json(err);
   }
