@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Recommend } = require('../../models'); // You need to import the Recommend model, not the "recommend" object
 const withAuth = require('../../utils/auth');
 
+con
+
 
 router.post('/', withAuth, async (req, res) => {
   try {
