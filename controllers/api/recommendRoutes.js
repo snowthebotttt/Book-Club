@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Recommend } = require('../../models'); // You need to import the Recommend model, not the "recommend" object
 const withAuth = require('../../utils/auth');
-const sequelize = require('../../config/connection');
+
 
 router.post('/', withAuth, async (req, res) => {
   try {
