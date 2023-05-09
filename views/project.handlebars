@@ -12,3 +12,34 @@
     <button class="btn btn-primary">Fund this Project!</button>
   </p>
 </div>
+
+
+// Example data containing multiple cards
+const data = {
+  cards: [
+    {
+      imageSrc: "./public/img/Image1.png",
+      title: "Card 1",
+      content: "Some example text for card 1.",
+      buttonLink: "#",
+      buttonText: "Go somewhere"
+    },
+    {
+      imageSrc: "./public/img/Image2.png",
+      title: "Card 2",
+      content: "Some example text for card 2.",
+      buttonLink: "#",
+      buttonText: "Go somewhere else"
+    },
+    // Add more card objects as needed
+  ]
+};
+
+// Compile the Handlebars template
+const template = Handlebars.compile(document.getElementById("card-template").innerHTML);
+
+// Render the template with the data
+const renderedHTML = template(data);
+
+// Insert the rendered HTML into the document
+document.getElementById("cards-container").innerHTML = renderedHTML;
