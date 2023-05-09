@@ -4,6 +4,7 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const userRoutes = require("./controllers/api/usersController");
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
+app.use("/api/users", userRoutes); // Mount userRoutes under /api/users
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
