@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { User } = require('../../models');
-
+const router = require("express").Router();
+const User = require("../../models");
+console.log(User);
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const userData = await User.create({
       username: req.body.username,
@@ -18,11 +18,12 @@ router.post('/', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  } const router = require('express').Router();
-  const { Project } = require('../../models');
-  const withAuth = require('../../utils/auth');
+  }
+  const router = require("express").Router();
+  const { Project } = require("../../models");
+  const withAuth = require("../../utils/auth");
 
-  router.post('/', withAuth, async (req, res) => {
+  router.post("/", withAuth, async (req, res) => {
     try {
       const newProject = await Project.create({
         ...req.body,
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
     }
   });
 
-  router.delete('/:id', withAuth, async (req, res) => {
+  router.delete("/:id", withAuth, async (req, res) => {
     try {
       const projectData = await Project.destroy({
         where: {
@@ -45,7 +46,7 @@ router.post('/', async (req, res) => {
       });
 
       if (!projectData) {
-        res.status(404).json({ message: 'No project found with this id!' });
+        res.status(404).json({ message: "No project found with this id!" });
         return;
       }
 
@@ -56,11 +57,10 @@ router.post('/', async (req, res) => {
   });
 
   module.exports = router;
-
 });
 
 // Login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const UserData = await User.findOne({
       where: {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
     if (!UserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
@@ -80,17 +80,15 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+    // req.session.save(() => {
+    //   req.session.loggedIn = true;
 
-      res
-        .status(200)
-        .json({ user: UserData, message: 'You are now logged in!' });
-    });
+    res.status(200).render("test", userData);
+    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -98,7 +96,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
