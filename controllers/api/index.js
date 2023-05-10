@@ -8,7 +8,7 @@ const router = express.Router();
 const userRoutes = require("./usersController");
 
 // Define routes
-router.use("/users", userRoutes);
+// router.use("/users", userRoutes);
 
 // Export router
 module.exports = router;

@@ -1,7 +1,6 @@
-const user = require('./user');
-const book = require('./book');
-const recommend = require('./recommend');
-
+const user = require("./user");
+const book = require("./book");
+const recommend = require("./recommend");
 
 // Products belongsTo Category
 // book.belongsTo(user, {
@@ -27,8 +26,6 @@ const recommend = require('./recommend');
 //   foreignKey: 'tag_id',
 //   through: ProductTag,
 // });
-
-
 
 // module.exports = {
 //   Product,
