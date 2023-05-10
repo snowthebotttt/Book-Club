@@ -1,46 +1,41 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="" width=device-width, initial-scale="1.0">
-  <title> BOOK CLUB </title>
-  <link rel="stylesheet" href="/public/css/jass.css">
-  <link rel="stylesheet" href="/public/css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content=""
+      width="device-width,"
+      initial-scale="1.0"
+    />
+    <title> BOOK CLUB </title>
+    <link rel="stylesheet" href="/public/css/jass.css" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
 
-<body>
-  <div class="flex-column justify-space-around"></div>
-  <header class="display-flex justify-space-between align-center p-2"></div>"
-  <h1>
-    <span role="img" aria-label="fight">🥋</span>
-    <a href="/">Welcome to Book Club!!!!</a>
-  </h1>
-  <nav>
+  <body>
+    <div class="flex-column justify-space-around"></div>
+    <header class="display-flex justify-space-between align-center p-2">
+      <h1>
+        <span role="img" aria-label="fight">🥋</span>
+        <a href="/">Welcome to Book Club!!!!</a>
+      </h1>
+      <nav>
+        {{#if logged_in}}
+          <a href="/views/profile.handlebars">profile</a>
+          <button class="no-button" id="logout">logout</button>
+        {{else}}
+          <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="main container-fluid mt-5">
+      {{! Copy Everything inside of main div and put inside of homepage.handlebars }}
+      {{{body}}}
+    </main>
     {{#if logged_in}}
-    <a href="/views/profile.handlebars">profile</a>
-    <button class="no-button" id="logout">logout</button>
-    {{else}}
-    <a href="/views/login.handlebars">login</a>
-    {{if}}
-  </nav>
-  </header>
-<main class="main container-fluid mt-5">
-  <div class="container1">
-    {{#each cards}}
-    <div class="card" style="width: 18rem">
-      <img src="{{imageSrc}}" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{content}}</p>
-        <a href="{{buttonLink}}" class="btn btn-primary">{{buttonText}}</a>
-      </div>
-    </div>
-    {{/each}}
-  </main>
-{{#if logged_in}}
-<script src="../../public/js/logout.js"></script>
-{{/if}}
-</body>
+      <script src="/public/js/logout.js"></script>
+    {{/if}}
+  </body>
 
 </html>

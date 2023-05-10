@@ -1,8 +1,6 @@
 const router = require("express").Router();
-const { User } = require("../../models");
-const router = require("express").Router();
-const { User } = require("../../models");
-
+const User = require("../../models");
+console.log(User);
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -86,13 +84,11 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+    // req.session.save(() => {
+    //   req.session.loggedIn = true;
 
-      res
-        .status(200)
-        .json({ user: UserData, message: "You are now logged in!" });
-    });
+    res.status(200).render("test", userData);
+    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
